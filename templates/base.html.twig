@@ -3,9 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% endblock %}
     </head>
     <body>
+        <div class="bg-dark text-uppercase font-weight-light d-flex p-2">
+
+                <a href="{{ path('user_index') }}" class="text-warning p-2">Étudiants</a> 
+                <a href="{{ path('ecole_index') }}" class="text-warning p-2">Écoles</a> 
+                <a href="{{ path('axe_index') }}" class="text-warning p-2">Axes</a>
+
+                {% if app.user %}
+                    <a href="{{ path('app_logout') }}" class="text-warning ml-auto p-2">Se déconnecter</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="text-warning ml-auto p-2">Se connecter</a>
+                    <a href="{{ path('app_register') }}" class="text-warning p-2">S'enregistrer</a>
+                {% endif %}
+        </div>
+
+        {# Boucle de message Flash avant le Body #}
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <p class="text-center">{{ type }} : {{ message }}</p>
+            {% endfor %}
+        {% endfor %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

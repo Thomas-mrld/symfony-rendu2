@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Axe index{% endblock %}
+
+{% block body %}
+    <h1 class="text-center p-2 m-2">Liste des axes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for axe in axes %}
+            <tr>
+                {# <td>{{ axe.id }}</td> #}
+                <td>{{ axe.nom }}</td>
+                <td>
+                    <a href="{{ path('axe_show', {'id': axe.id}) }}" class="text-warning">Afficher</a>
+                    <a href="{{ path('axe_edit', {'id': axe.id}) }}" class="text-warning">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune donnée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-center">
+    <a href="{{ path('axe_new') }}" class="btn btn-outline-warning">Ajouter un axe</a>
+    </div>
+{% endblock %}

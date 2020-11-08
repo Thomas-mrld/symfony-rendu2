@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur index{% endblock %}
+
+{% block body %}
+    <h1 class="text-center p-2 m-2">Liste des étudiants</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Email</th>
+                {# <th>Roles</th> #}
+                {# <th>Password</th> #}
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Code postal</th>
+                <th>Téléphone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                {# <td>{{ user.id }}</td> #}
+                <td>{{ user.email }}</td>
+                {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
+                {# <td>{{ user.password }}</td> #}
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.adresse }}</td>
+                <td>{{ user.ville }}</td>
+                <td>{{ user.codePostal }}</td>
+                <td>{{ user.telephone }}</td>
+                <td>
+                    <a href="{{ path('user_show', {'id': user.id}) }}" class="text-warning">Afficher</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}" class="text-warning">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">Aucune donnée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+     
+     <div class="text-center">
+    <a href="{{ path('user_new') }}" class="btn btn-outline-warning">Ajouter un étudiant</a>
+    <div>
+{% endblock %}

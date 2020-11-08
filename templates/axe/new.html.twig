@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel axe{% endblock %}
+
+{% block body %}
+    <h1 class="text-center m-2 p-2">Ajouter un axe</h1>
+
+    {{ include('axe/_form.html.twig') }}
+
+    <a href="{{ path('axe_index') }}" class="text-warning">Retour à la liste</a>
+{% endblock %}

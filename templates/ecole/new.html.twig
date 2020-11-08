@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle école{% endblock %}
+
+{% block body %}
+    <h1 class="text-center m-2 p-2">Ajouter une école</h1>
+
+    {{ include('ecole/_form.html.twig') }}
+
+    <a href="{{ path('ecole_index') }}" class="text-warning">Retour à la liste</a>
+{% endblock %}
