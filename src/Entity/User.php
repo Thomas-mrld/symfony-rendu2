@@ -73,8 +73,7 @@ class User implements UserInterface
 
     public function __toString()
     {
-        return $this->nom;
-        return $this->roles;
+        return $this->axe;
     }
 
     public function getId(): ?int
