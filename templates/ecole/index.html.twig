@@ -20,7 +20,9 @@
                 <td>{{ ecole.nom }}</td>
                 <td>
                     <a href="{{ path('ecole_show', {'id': ecole.id}) }}" class="text-warning">Afficher</a>
-                    <a href="{{ path('ecole_edit', {'id': ecole.id}) }}" class="text-warning">Modifier</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('ecole_edit', {'id': ecole.id}) }}" class="text-warning">Modifier</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -30,7 +32,10 @@
         {% endfor %}
         </tbody>
     </table>
-    <div class="text-center">
-    <a href="{{ path('ecole_new') }}" class="btn btn-outline-warning">Ajouter une école</a>
-    </div>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="text-center">
+            <a href="{{ path('ecole_new') }}" class="btn btn-outline-warning">Ajouter une école</a>
+        </div>
+    {% endif %}
 {% endblock %}

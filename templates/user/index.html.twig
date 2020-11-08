@@ -51,7 +51,9 @@
         </tbody>
     </table>
      
-     <div class="text-center">
-    <a href="{{ path('user_new') }}" class="btn btn-outline-warning">Ajouter un étudiant</a>
-    <div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="text-center">
+            <a href="{{ path('user_new') }}" class="btn btn-outline-warning">Ajouter un étudiant</a>
+        <div>
+    {% endif %}
 {% endblock %}

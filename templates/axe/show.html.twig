@@ -10,17 +10,21 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>actions</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>actions</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>{{ axe.id }}</td>
                 <td>{{ axe.nom }}</td>
-                <td>
-                    <a href="{{ path('axe_edit', {'id': axe.id}) }}" class="text-warning">Modifier</a>
-                    {{ include('axe/_delete_form.html.twig') }}
-                </td>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <td>
+                        <a href="{{ path('axe_edit', {'id': axe.id}) }}" class="text-warning">Modifier</a>
+                        {{ include('axe/_delete_form.html.twig') }}
+                    </td>
+                {% endif %}
             </tr>
         </tbody>
     </table>
